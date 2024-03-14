@@ -27,7 +27,7 @@ val env = Map[String, Eval](
     println(s"stack=$stack"); 
     Seq()
   }),
-  "pop" -> (xs => stack.pop() +: xs),
+  "pop" -> (xs => {val res = stack.pop() +: xs; println(s"stack=$stack"); res}),
 
 )
 
@@ -38,8 +38,9 @@ def exec(xs: Seq[String]): Seq[String] =
       Try(env(f).apply(exec(xs))).recover{case e => Seq(e.toString)}.get
     case Seq(f, xs*) => f +: exec(xs)
 
-/* TODO 
-  develop a simple interpreted dynamic language that can do everything
-  should it be a stack machine?
-  should it have space as function application f 1 2 3 or f(1,2,3)?
-*/
+@main def loop =
+  while true do
+    val line = scala.io.StdIn.readLine("> ")
+    val tokens = line.split(" ").map(_.toString.trim).filter(_.nonEmpty).toSeq
+    val res = exec(tokens)
+    println(s"result=${res.mkString(" ")}")
