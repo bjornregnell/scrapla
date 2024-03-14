@@ -1,0 +1,16 @@
+test/
+.metals/
+**/metals.sbt
+**/.scala-build
+
+.bloop/
+**/target/
+**/*.class
+.bsp
+
+.cache
+.history
+.lib/
+dist/*
+project/boot/
+.vscode/settings.json
