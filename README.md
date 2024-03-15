@@ -1,6 +1,6 @@
 # scrapla
 
-A simplistic strongly typed dynamic functional script language available at Scala runtime.
+A minimalistic strongly typed dynamic functional script language available at Scala runtime.
 
 
 
